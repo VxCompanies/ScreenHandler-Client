@@ -295,6 +295,7 @@ IEnumerable<Customer> SearchCustomerByField()
         Console.WriteLine("3) Age");
         Console.WriteLine("4) Email address");
         Console.WriteLine("5) Go back");
+
         Console.Write($"{Environment.NewLine}>> ");
         var selectedOption = Console.ReadLine();
 
@@ -379,7 +380,14 @@ IEnumerable<Customer> SearchCustomerByAge()
             continue;
         }
 
-        var customers = formRepository.GetAll(c => c.Age == int.Parse(value));
+        if (int.TryParse(value, out int age))
+        {
+            Console.Write("Customer age must be an integer.");
+            Console.ReadKey(true);
+            continue;
+        }
+
+        var customers = formRepository.GetAll(c => c.Age == age);
         return customers;
     } while (true);
 }
@@ -423,7 +431,14 @@ Customer SearchCustomerById()
             continue;
         }
 
-        var customer = formRepository.Get(int.Parse(customerId));
+        if (int.TryParse(customerId, out int id))
+        {
+            Console.Write("Customer ID must be an integer.");
+            Console.ReadKey(true);
+            continue;
+        }
+
+        var customer = formRepository.Get(id);
         return customer;
     } while (true);
 }
