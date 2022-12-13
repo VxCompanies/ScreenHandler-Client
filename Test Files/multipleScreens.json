@@ -1,0 +1,34 @@
+[
+    {
+        "id": "entrevistadoScreen",
+        "title": {
+        "display": "Datos entrevistados",
+        "centralized": true
+    },
+        "fields": [
+            { "name": "Nombre", "type": "string", "required": true },
+            { "name": "Apellido", "type": "string", "required": true },
+            { "name": "Edad", "type": "int", "required": true }
+        ],
+        "actions": [
+            { "name": "save", "option": "G", "handler": "Program.Save", "succ": "personEntry", "fail": "personEntryFailure" },
+            { "name": "cancel", "option": "C", "handler": "Program.Cancel", "succ": "EXIT!", "fail": "EXIT!" }
+        ]
+    },
+    {
+        "id": "randomScreen",
+        "title": {
+        "display": "Random :p",
+        "centralized": false
+    },
+        "fields": [
+            { "name": "Lo ves?", "type": "string", "required": true },
+            { "name": "Ta raro", "type": "string", "required": false },
+            { "name": "No?", "type": "string", "required": true }
+        ],
+        "actions": [
+            { "name": "save", "option": "G", "handler": "Program.Save", "succ": "personEntry", "fail": "personEntryFailure" },
+            { "name": "cancel", "option": "C", "handler": "Program.Cancel", "succ": "EXIT!", "fail": "EXIT!" }
+        ]
+    }
+]
